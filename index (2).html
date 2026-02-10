@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💚 Will You Be My Valentine? 💚</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Music (Hidden Audio Element) -->
+    <audio id="bgMusic" loop>
+        <source src="./valentine-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle Button (Fixed Position) -->
+    <button id="musicToggle" class="music-toggle" title="Toggle Music">
+        🔇
+    </button>
+
+    <!-- Countdown Timer (Fixed Position) -->
+    <div id="countdown" class="countdown">
+        <div class="countdown-content">
+            <span class="countdown-label">💖 Valentine's Day in:</span>
+            <span id="countdownTimer" class="countdown-timer">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Section 1: The Question -->
+    <section id="section1" class="section active">
+        <div class="container">
+            <div class="shrek-badge">🐸 Shrek-Approved 🐸</div>
+            <h1 class="main-title">Will you be my Valentine<br>for the 2nd time? 💚</h1>
+            <p class="subtitle">Because like Shrek said, "Better out than in!" 😄</p>
+            
+            <div class="button-container">
+                <button id="yesBtn" class="btn btn-yes">
+                    Yes! 💚
+                </button>
+                <button id="noBtn" class="btn btn-no">
+                    No 🙃
+                </button>
+            </div>
+
+            <div class="swamp-decoration">
+                <span class="swamp-emoji">🌿</span>
+                <span class="swamp-emoji">💚</span>
+                <span class="swamp-emoji">🌿</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Date Availability -->
+    <section id="section2" class="section">
+        <div class="container">
+            <h2 class="section-title">When can we spend Valentine's together? 📅</h2>
+            <p class="section-subtitle">Pick all that work for you, my love!</p>
+
+            <div class="options-grid">
+                <label class="option-card" data-value="feb14-evening">
+                    <input type="checkbox" name="date" value="feb14-evening">
+                    <div class="card-content">
+                        <span class="card-emoji">🌙</span>
+                        <h3>February 14</h3>
+                        <p>Evening Magic</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="feb15-allday">
+                    <input type="checkbox" name="date" value="feb15-allday">
+                    <div class="card-content">
+                        <span class="card-emoji">☀️</span>
+                        <h3>February 15</h3>
+                        <p>All Day Adventure</p>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(3)">
+                Next 💚
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 3: Food Selection -->
+    <section id="section3" class="section">
+        <div class="container">
+            <h2 class="section-title">What shall we feast on? 🍕🍜</h2>
+            <p class="section-subtitle">Like ogres, good food has layers!</p>
+
+            <div class="options-grid food-grid">
+                <label class="option-card" data-value="pizza">
+                    <input type="checkbox" name="food" value="pizza">
+                    <div class="card-content">
+                        <span class="card-emoji">🍕</span>
+                        <h3>Pizza</h3>
+                        <p>Classic & Delicious</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="burger">
+                    <input type="checkbox" name="food" value="burger">
+                    <div class="card-content">
+                        <span class="card-emoji">🍔</span>
+                        <h3>Burger</h3>
+                        <p>Juicy Goodness</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="pasta">
+                    <input type="checkbox" name="food" value="pasta">
+                    <div class="card-content">
+                        <span class="card-emoji">🍝</span>
+                        <h3>Pasta</h3>
+                        <p>Italian Romance</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="sushi">
+                    <input type="checkbox" name="food" value="sushi">
+                    <div class="card-content">
+                        <span class="card-emoji">🍣</span>
+                        <h3>Sushi</h3>
+                        <p>Fresh & Fancy</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="surprise">
+                    <input type="checkbox" name="food" value="surprise">
+                    <div class="card-content">
+                        <span class="card-emoji">🎁</span>
+                        <h3>Surprise Me!</h3>
+                        <p>Chef's Choice</p>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(4)">
+                Next 💚
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 4: Desserts -->
+    <section id="section4" class="section">
+        <div class="container">
+            <h2 class="section-title">Time for something sweet! 🍰🍫</h2>
+            <p class="section-subtitle">Because you're already sweet enough... but why stop there?</p>
+
+            <div class="options-grid">
+                <label class="option-card" data-value="chocolate-cake">
+                    <input type="checkbox" name="dessert" value="chocolate-cake">
+                    <div class="card-content">
+                        <span class="card-emoji">🍫</span>
+                        <h3>Chocolate Cake</h3>
+                        <p>Rich & Decadent</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="cheesecake">
+                    <input type="checkbox" name="dessert" value="cheesecake">
+                    <div class="card-content">
+                        <span class="card-emoji">🍰</span>
+                        <h3>Cheesecake</h3>
+                        <p>Creamy Dream</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="ice-cream">
+                    <input type="checkbox" name="dessert" value="ice-cream">
+                    <div class="card-content">
+                        <span class="card-emoji">🍨</span>
+                        <h3>Ice Cream</h3>
+                        <p>Cool & Sweet</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="brownies">
+                    <input type="checkbox" name="dessert" value="brownies">
+                    <div class="card-content">
+                        <span class="card-emoji">🟫</span>
+                        <h3>Brownies</h3>
+                        <p>Fudgy Perfection</p>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(5)">
+                Next 💚
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 5: Online Activities -->
+    <section id="section5" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's bridge the distance! 💻💞</h2>
+            <p class="section-subtitle">Virtual love is still real love ✨</p>
+
+            <div class="options-grid activities-grid">
+                <label class="option-card" data-value="movie">
+                    <input type="checkbox" name="activity" value="movie">
+                    <div class="card-content">
+                        <span class="card-emoji">🎬</span>
+                        <h3>Movie Together</h3>
+                        <p>Teleparty Time!</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="game-night">
+                    <input type="checkbox" name="activity" value="game-night">
+                    <div class="card-content">
+                        <span class="card-emoji">🎮</span>
+                        <h3>Game Night</h3>
+                        <p>Competitive Fun</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="dinner-date">
+                    <input type="checkbox" name="activity" value="dinner-date">
+                    <div class="card-content">
+                        <span class="card-emoji">🍽️</span>
+                        <h3>Video Dinner</h3>
+                        <p>Same Time, Different Place</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="love-quiz">
+                    <input type="checkbox" name="activity" value="love-quiz">
+                    <div class="card-content">
+                        <span class="card-emoji">❤️</span>
+                        <h3>Love Quiz</h3>
+                        <p>How Well Do We Know Each Other?</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="virtual-tour">
+                    <input type="checkbox" name="activity" value="virtual-tour">
+                    <div class="card-content">
+                        <span class="card-emoji">🏛️</span>
+                        <h3>Virtual Tour</h3>
+                        <p>Explore Together</p>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(6)">
+                Next 💚
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 6: Gift Selection -->
+    <section id="section6" class="section">
+        <div class="container">
+            <h2 class="section-title">Pick your treasure! 🎁</h2>
+            <p class="section-subtitle">Every princess (or Fiona) deserves a gift!</p>
+
+            <div class="options-grid">
+                <label class="option-card" data-value="plushie">
+                    <input type="radio" name="gift" value="plushie">
+                    <div class="card-content">
+                        <span class="card-emoji">🧸</span>
+                        <h3>Cuddly Plushie</h3>
+                        <p>Hugs From Afar</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="hoodie">
+                    <input type="radio" name="gift" value="hoodie">
+                    <div class="card-content">
+                        <span class="card-emoji">👚</span>
+                        <h3>Cozy Hoodie</h3>
+                        <p>Warm & Comfy</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="perfume">
+                    <input type="radio" name="gift" value="perfume">
+                    <div class="card-content">
+                        <span class="card-emoji">💐</span>
+                        <h3>Sweet Perfume</h3>
+                        <p>Elegant Scent</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="love-letter">
+                    <input type="radio" name="gift" value="love-letter">
+                    <div class="card-content">
+                        <span class="card-emoji">💌</span>
+                        <h3>Love Letter</h3>
+                        <p>Words From Heart</p>
+                    </div>
+                </label>
+
+                <label class="option-card" data-value="shrek-surprise">
+                    <input type="radio" name="gift" value="shrek-surprise">
+                    <div class="card-content">
+                        <span class="card-emoji">🐸</span>
+                        <h3>Shrek Surprise</h3>
+                        <p>Trust The Ogre</p>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(7)">
+                See The Magic! ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 7: Photo Memories -->
+    <section id="section7" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Story in Pictures 📸💚</h2>
+            <p class="section-subtitle">These moments with you make my heart smile!</p>
+
+            <div class="photo-gallery">
+                <!-- Photo 1 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo1.png" alt="Us together" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">You make my heart smile 💚</p>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo2.png" alt="Beautiful memories" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">Adventures together</p>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo3.png" alt="Happy times" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">My favorite cuddle buddy</p>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo4.png" alt="Love" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">Beautiful traditions 🇺🇦</p>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo5.png" alt="Adventures" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">Making memories everywhere</p>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="polaroid">
+                    <div class="photo-frame">
+                        <img src="./photos/photo6.png" alt="Us" class="gallery-photo">
+                    </div>
+                    <p class="photo-caption">My amazing Valentine 💕</p>
+                </div>
+            </div>
+
+            <div class="photo-note">
+                <p>💚 Every picture tells our story 💚</p>
+            </div>
+
+            <button class="btn btn-next" onclick="nextSection(8)">
+                Continue to Summary ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 8: Final Summary -->
+    <section id="section8" class="section">
+        <div class="container final-section">
+            <div class="shrek-meme">
+                <h2 class="section-title">This Valentine is like Shrek...</h2>
+                <p class="meme-text">A little weird, very special, and totally worth it 💚</p>
+                <div class="shrek-quote">
+                    "Ogres are like onions... they have layers.<br>
+                    Just like our love! 🧅💚"
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <h3>Your Perfect Valentine's Plan 💕</h3>
+                <div id="summaryContent" class="summary-content">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="final-message">
+                <p class="big-heart">💚</p>
+                <p>I can't wait to celebrate with you!</p>
+                <p class="signature">- Your Shrek 🐸</p>
+            </div>
+
+            <button class="btn btn-restart" onclick="restartExperience()">
+                Start Over 🔄
+            </button>
+        </div>
+    </section>
+
+    <!-- Confetti Container -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
